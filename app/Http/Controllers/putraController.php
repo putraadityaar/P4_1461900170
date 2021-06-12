@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class putraController extends Controller
 {
@@ -11,9 +12,14 @@ class putraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function Buku()
     {
-        //
+        $buku = DB::table('buku')->get();
+        return view('buku0170',['buku' => $buku]);
+    }
+    public function export()
+    {
+        return Excel::download(new DATA_1461900170, 'DATA_1461900170.xlsx');
     }
 
     /**
